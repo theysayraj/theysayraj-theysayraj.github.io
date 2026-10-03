@@ -1,0 +1,1938 @@
+/* =========================================================
+   RAJ MISHRA PORTFOLIO
+   COMPLETE RESPONSIVE CSS
+   ========================================================= */
+
+
+/* =========================================================
+   1. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+    --bg: #111315;
+    --bg-soft: #151819;
+    --card: #181b1d;
+    --card-hover: #1c2022;
+
+    --text: #f2f2ee;
+    --text-soft: #a8adb0;
+    --text-muted: #777d80;
+
+    --green: #35e0a1;
+    --green-dark: #1fbf84;
+
+    --violet: #9b7cff;
+    --violet-soft: #b39cff;
+
+    --border: #2d3235;
+    --border-green: rgba(53, 224, 161, 0.55);
+
+    --shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+
+    --nav-height: 72px;
+
+    --transition: 0.3s ease;
+}
+
+
+/* =========================================================
+   2. LIGHT MODE
+   ========================================================= */
+
+body.light-mode {
+    --bg: #f4f5f3;
+    --bg-soft: #ffffff;
+    --card: #ffffff;
+    --card-hover: #f7f8f7;
+
+    --text: #17191a;
+    --text-soft: #555b5d;
+    --text-muted: #73797b;
+
+    --border: #d9dddd;
+    --border-green: rgba(31, 191, 132, 0.55);
+
+    --shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   3. RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+
+    transition:
+        background var(--transition),
+        color var(--transition);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* =========================================================
+   4. CONTAINER
+   ========================================================= */
+
+.container {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   5. NAVBAR
+   ========================================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: var(--nav-height);
+
+    z-index: 1000;
+
+    background: rgba(17, 19, 21, 0.94);
+
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(12px);
+
+    transition:
+        background var(--transition),
+        border var(--transition);
+}
+
+body.light-mode .navbar {
+    background: rgba(255, 255, 255, 0.94);
+}
+
+
+/* Main navbar container */
+
+.nav-container {
+    width: min(1200px, 92%);
+    height: 100%;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   6. NAV LINKS
+   ========================================================= */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 28px;
+
+    margin-left: auto;
+}
+
+
+.nav-links a {
+    position: relative;
+
+    color: var(--text-soft);
+
+    font-size: 15px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        color var(--transition),
+        transform var(--transition);
+}
+
+
+.nav-links a:hover {
+    color: var(--green);
+}
+
+
+.nav-links a.active {
+    color: var(--green);
+}
+
+
+/* Underline */
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--green);
+
+    transition: width var(--transition);
+}
+
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   7. MOBILE MENU BUTTON
+   ========================================================= */
+
+.menu-toggle {
+    display: none;
+
+    width: 44px;
+    height: 38px;
+
+    border: 1px solid var(--border-green);
+    border-radius: 8px;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    transition: var(--transition);
+}
+
+
+.menu-toggle span {
+    width: 20px;
+    height: 2px;
+
+    background: var(--green);
+
+    border-radius: 2px;
+
+    transition: var(--transition);
+}
+
+
+.menu-toggle:hover {
+    background: var(--green);
+}
+
+
+.menu-toggle:hover span {
+    background: #111315;
+}
+
+
+/* =========================================================
+   8. DARK / LIGHT TOGGLE
+   ========================================================= */
+
+.theme-toggle {
+    width: 50px;
+    height: 28px;
+
+    border: 1px solid var(--green);
+
+    border-radius: 30px;
+
+    background: #1a1d1f;
+
+    color: var(--green);
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+
+    transition: var(--transition);
+
+    flex-shrink: 0;
+}
+
+
+.theme-toggle:hover {
+    background: var(--green);
+    color: #111315;
+
+    transform: scale(1.05);
+}
+
+
+body.light-mode .theme-toggle {
+    background: #ffffff;
+    color: #111315;
+}
+
+
+/* =========================================================
+   9. HERO
+   ========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding-top: var(--nav-height);
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.hero-container {
+    width: min(1100px, 90%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1.15fr 0.85fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+.hero-content {
+    padding: 40px 0;
+}
+
+
+.intro-tag {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--green);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 12px;
+}
+
+
+.intro-tag span {
+    width: 34px;
+    height: 2px;
+
+    background: var(--green);
+}
+
+
+.hero h1 {
+    font-size: clamp(55px, 7vw, 86px);
+
+    line-height: 1;
+
+    letter-spacing: -3px;
+
+    margin-bottom: 25px;
+
+    font-weight: 800;
+}
+
+
+.hero h1 strong {
+    color: var(--violet);
+}
+
+
+.hero h2 {
+    font-size: 25px;
+
+    font-weight: 500;
+
+    color: var(--text);
+
+    margin-bottom: 8px;
+}
+
+
+.role {
+    color: var(--green);
+
+    font-size: 23px;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+}
+
+
+.hero p {
+    max-width: 620px;
+
+    color: var(--text-soft);
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   10. HERO BUTTONS
+   ========================================================= */
+
+.hero-buttons {
+    display: flex;
+
+    gap: 14px;
+}
+
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 110px;
+
+    padding: 12px 22px;
+
+    border-radius: 5px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+
+.github-btn {
+    background: var(--green);
+
+    color: #111315;
+
+    border: 1px solid var(--green);
+}
+
+
+.github-btn:hover {
+    background: transparent;
+
+    color: var(--green);
+
+    transform: translateY(-2px);
+}
+
+
+.linkedin-btn {
+    background: transparent;
+
+    color: var(--violet);
+
+    border: 1px solid var(--violet);
+}
+
+
+.linkedin-btn:hover {
+    background: var(--violet);
+
+    color: #111315;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   11. HERO CLOUD DESIGN
+   ========================================================= */
+
+.hero-design {
+    position: relative;
+
+    width: 390px;
+    height: 390px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.design-box {
+    position: absolute;
+
+    width: 200px;
+    height: 200px;
+
+    border: 1px solid var(--green);
+
+    transform: rotate(14deg);
+
+    opacity: 0.7;
+}
+
+
+.box-one {
+    transform: rotate(14deg);
+}
+
+
+.box-two {
+    border-color: var(--violet);
+
+    transform: rotate(48deg);
+
+    opacity: 0.35;
+}
+
+
+.box-three {
+    width: 260px;
+    height: 260px;
+
+    border-color: var(--green);
+
+    border-radius: 50%;
+
+    transform: rotate(0);
+
+    opacity: 0.22;
+}
+
+
+.cloud-symbol {
+    position: relative;
+
+    z-index: 3;
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    letter-spacing: 6px;
+
+    color: var(--green);
+}
+
+
+/* =========================================================
+   12. SCROLL INDICATOR
+   ========================================================= */
+
+.scroll-indicator {
+    position: absolute;
+
+    bottom: 30px;
+    left: 5%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.scroll-indicator div {
+    width: 40px;
+    height: 1px;
+
+    background: var(--text-muted);
+}
+
+
+/* =========================================================
+   13. GENERAL SECTION
+   ========================================================= */
+
+.section {
+    padding: 110px 0;
+
+    position: relative;
+}
+
+
+.section-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 60px;
+}
+
+
+.section-title span {
+    color: var(--green);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.section-title h2 {
+    font-size: 38px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+
+.section-title::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: var(--border);
+}
+
+
+/* =========================================================
+   14. ABOUT
+   ========================================================= */
+
+.about-content {
+    display: grid;
+
+    grid-template-columns: 1fr 320px;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+
+.about-text p {
+    color: var(--text-soft);
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+    margin-bottom: 20px;
+}
+
+
+.about-photo {
+    display: flex;
+
+    justify-content: center;
+}
+
+
+.about-photo img {
+    width: 340px;
+    height: 420px;
+
+    object-fit: cover;
+
+    border-radius: 24px;
+
+    border: 3px solid var(--green);
+
+    box-shadow:
+        0 0 0 8px rgba(53, 224, 161, 0.04),
+        0 20px 50px rgba(0, 0, 0, 0.3);
+
+    transition: transform 0.4s ease;
+}
+
+
+.about-photo img:hover {
+    transform: scale(1.03);
+}
+
+
+/* =========================================================
+   15. SKILLS
+   ========================================================= */
+
+.skills-section {
+    background: var(--bg-soft);
+}
+
+
+.skills-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+
+.skill-card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    padding: 28px;
+
+    border-radius: 8px;
+
+    transition:
+        transform var(--transition),
+        border var(--transition),
+        background var(--transition);
+}
+
+
+.skill-card:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--border-green);
+
+    background: var(--card-hover);
+}
+
+
+.skill-card h3 {
+    color: var(--green);
+
+    font-size: 19px;
+
+    margin-bottom: 15px;
+}
+
+
+.skill-card p {
+    color: var(--text-soft);
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   16. PROJECTS
+   ========================================================= */
+
+.projects-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+
+.project-card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    padding: 30px;
+
+    transition: var(--transition);
+}
+
+
+.project-card:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--border-green);
+
+    box-shadow: var(--shadow);
+}
+
+
+.project-card span {
+    color: var(--green);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.project-card h3 {
+    font-size: 21px;
+
+    margin: 12px 0;
+}
+
+
+.project-card p {
+    color: var(--text-soft);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   17. EXPERIENCE
+   ========================================================= */
+
+.experience-section {
+    background: var(--bg-soft);
+}
+
+
+.experience-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+
+.experience-card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-left: 3px solid var(--green);
+
+    padding: 28px;
+
+    border-radius: 6px;
+}
+
+
+.experience-card h3 {
+    font-size: 21px;
+
+    margin-bottom: 7px;
+}
+
+
+.experience-card .company {
+    color: var(--green);
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
+
+.experience-card .date {
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    margin-bottom: 15px;
+}
+
+
+.experience-card p {
+    color: var(--text-soft);
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   18. CERTIFICATIONS
+   ========================================================= */
+
+.certifications-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.certificate-card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    padding: 28px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transition),
+        border var(--transition),
+        background var(--transition);
+}
+
+
+.certificate-card:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--green);
+
+    background: var(--card-hover);
+}
+
+
+.certificate-icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--green);
+
+    border-radius: 7px;
+
+    color: var(--green);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    margin-bottom: 25px;
+}
+
+
+.certificate-card h3 {
+    font-size: 18px;
+
+    line-height: 1.4;
+
+    margin-bottom: 12px;
+}
+
+
+.certificate-card p {
+    color: var(--text-muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   19. EVENTS
+   ========================================================= */
+
+.events-section {
+    background: var(--bg-soft);
+}
+
+
+.events-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+
+.event-card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    padding: 28px;
+
+    transition: var(--transition);
+}
+
+
+.event-card:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--green);
+}
+
+
+.event-card h3 {
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+
+.event-card p {
+    color: var(--text-soft);
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   20. EDUCATION
+   ========================================================= */
+
+.education-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.education-card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    padding: 28px;
+
+    text-align: center;
+
+    transition: var(--transition);
+}
+
+
+.education-card:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--border-green);
+}
+
+
+.education-card h3 {
+    color: var(--green);
+
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+
+.education-card p {
+    color: var(--text-soft);
+
+    margin-bottom: 7px;
+}
+
+
+.education-card strong {
+    color: var(--text);
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   21. CONTACT
+   ========================================================= */
+
+.contact-section {
+    background: var(--bg-soft);
+
+    text-align: center;
+}
+
+
+.contact-section .section-title {
+    text-align: left;
+}
+
+
+.contact-content {
+    max-width: 700px;
+
+    margin: auto;
+}
+
+
+.contact-content h3 {
+    font-size: 38px;
+
+    margin-bottom: 15px;
+}
+
+
+.contact-content p {
+    color: var(--text-soft);
+
+    font-size: 17px;
+
+    margin-bottom: 28px;
+}
+
+
+.contact-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+.contact-btn {
+    display: inline-flex;
+
+    padding: 13px 24px;
+
+    border: 1px solid var(--green);
+
+    color: var(--green);
+
+    border-radius: 5px;
+
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+
+.contact-btn:hover {
+    background: var(--green);
+
+    color: #111315;
+}
+
+
+/* =========================================================
+   22. FOOTER
+   ========================================================= */
+
+footer {
+    border-top: 1px solid var(--border);
+
+    padding: 35px 0;
+
+    background: var(--bg);
+}
+
+
+.footer-content {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.footer-logo {
+    font-size: 20px;
+
+    font-weight: 800;
+
+    color: var(--text);
+}
+
+
+.footer-text {
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   23. CERTIFICATE MODAL
+   ========================================================= */
+
+.certificate-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    background: rgba(0, 0, 0, 0.88);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    animation: modalFade 0.2s ease;
+}
+
+
+@keyframes modalFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+.certificate-modal-content {
+    position: relative;
+
+    max-width: 900px;
+    max-height: 90vh;
+}
+
+
+.certificate-modal-content img {
+    display: block;
+
+    max-width: 100%;
+    max-height: 85vh;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+
+    border: 1px solid var(--green);
+
+    box-shadow:
+        0 0 40px rgba(53, 224, 161, 0.15);
+}
+
+
+.certificate-close {
+    position: absolute;
+
+    top: -48px;
+    right: 0;
+
+    width: 36px;
+    height: 36px;
+
+    border: 1px solid var(--green);
+
+    border-radius: 50%;
+
+    background: #111315;
+
+    color: var(--green);
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: var(--transition);
+}
+
+
+.certificate-close:hover {
+    background: var(--green);
+
+    color: #111315;
+}
+
+
+/* =========================================================
+   24. SCROLL REVEAL
+   ========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+
+.reveal.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   25. MOBILE SIDEBAR
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* -----------------------------
+       NAVBAR
+       ----------------------------- */
+
+    .navbar {
+        height: 64px;
+    }
+
+
+    .nav-container {
+        width: 92%;
+    }
+
+
+    /* Hamburger visible */
+
+    .menu-toggle {
+        display: flex;
+    }
+
+
+    /* Theme toggle right */
+
+    .theme-toggle {
+        position: absolute;
+
+        right: 4%;
+
+        width: 48px;
+        height: 28px;
+    }
+
+
+    /* Sidebar */
+
+    .nav-links {
+        position: fixed;
+
+        top: 64px;
+        left: 0;
+
+        width: 270px;
+        height: calc(100vh - 64px);
+
+        background: var(--card);
+
+        border-right: 1px solid var(--border);
+
+        padding: 35px 25px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        justify-content: flex-start;
+
+        gap: 0;
+
+        margin: 0;
+
+        transform: translateX(-100%);
+
+        transition: transform 0.35s ease;
+
+        box-shadow: 15px 0 40px rgba(0, 0, 0, 0.2);
+
+        overflow-y: auto;
+    }
+
+
+    /* Open sidebar */
+
+    .nav-links.mobile-open {
+        transform: translateX(0);
+    }
+
+
+    .nav-links a {
+        width: 100%;
+
+        padding: 15px 5px;
+
+        font-size: 17px;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+
+    .nav-links a::after {
+        display: none;
+    }
+
+
+    .nav-links a.active {
+        color: var(--green);
+
+        padding-left: 12px;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        min-height: auto;
+
+        padding-top: 100px;
+
+        padding-bottom: 100px;
+    }
+
+
+    .hero-container {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+        text-align: center;
+    }
+
+
+    .hero-content {
+        padding: 20px 0;
+    }
+
+
+    .intro-tag {
+        justify-content: center;
+    }
+
+
+    .hero h1 {
+        font-size: clamp(45px, 13vw, 70px);
+
+        letter-spacing: -2px;
+    }
+
+
+    .hero h2 {
+        font-size: 21px;
+    }
+
+
+    .role {
+        font-size: 20px;
+    }
+
+
+    .hero p {
+        font-size: 15px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+
+    /* Hero graphic */
+
+    .hero-design {
+        width: 300px;
+        height: 300px;
+    }
+
+
+    .design-box {
+        width: 160px;
+        height: 160px;
+    }
+
+
+    .box-three {
+        width: 220px;
+        height: 220px;
+    }
+
+
+    .scroll-indicator {
+        display: none;
+    }
+
+
+    /* Sections */
+
+    .section {
+        padding: 80px 0;
+    }
+
+
+    .section-title {
+        margin-bottom: 40px;
+
+        gap: 12px;
+    }
+
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+
+
+    /* About */
+
+    .about-content {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+        text-align: center;
+    }
+
+
+    .about-text p {
+        font-size: 15px;
+    }
+
+
+    .about-photo { 
+    order: -1; 
+} 
+
+.about-photo img { 
+    width: 230px; 
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+
+    /* Skills */
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Projects */
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Experience */
+
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Certifications */
+
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Events */
+
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Education */
+
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Contact */
+
+    .contact-content h3 {
+        font-size: 30px;
+    }
+
+
+    .contact-content p {
+        font-size: 15px;
+    }
+
+
+    /* Footer */
+
+    .footer-content {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .footer-text {
+        text-align: center;
+    }
+
+
+    /* Certificate */
+
+    .certificate-modal {
+        padding: 15px;
+    }
+
+
+    .certificate-modal-content {
+        width: 100%;
+    }
+
+
+    .certificate-modal-content img {
+        max-height: 80vh;
+    }
+
+
+    .certificate-close {
+        top: -45px;
+
+        right: 0;
+    }
+}
+
+
+/* =========================================================
+   26. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 88%;
+    }
+
+
+    .nav-container {
+        width: 90%;
+    }
+
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+
+    .hero h2 {
+        font-size: 19px;
+    }
+
+
+    .role {
+        font-size: 18px;
+    }
+
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    .btn {
+        width: 180px;
+    }
+
+
+    .hero-design {
+        width: 250px;
+        height: 250px;
+    }
+
+
+    .design-box {
+        width: 135px;
+        height: 135px;
+    }
+
+
+    .box-three {
+        width: 190px;
+        height: 190px;
+    }
+
+
+    .section-title h2 {
+        font-size: 27px;
+    }
+
+
+    .section-title span {
+        font-size: 12px;
+    }
+
+
+    .certificate-card,
+    .project-card,
+    .skill-card,
+    .experience-card,
+    .event-card,
+    .education-card {
+        padding: 23px;
+    }
+
+
+    .contact-buttons {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    .contact-btn {
+        width: 200px;
+
+        justify-content: center;
+    }
+}
+
+
+/* =========================================================
+   27. REDUCE MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================
+   FINAL FONT + NAVBAR IMPROVEMENTS
+   ========================================== */
+
+.nav-links a {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.nav-links {
+    gap: 28px;
+}
+
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+footer {
+    width: 100%;
+    padding: 45px 0 30px;
+    border-top: 1px solid #292d30;
+    background: #0d0f10;
+}
+
+.footer-container {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #f2f2ee;
+}
+
+footer p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #9da3a6;
+    margin: 6px 0;
+}
+
+
+/* ==========================================
+   CONTACT TEXT
+   ========================================== */
+
+.contact-section p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    .nav-links.mobile-open {
+        gap: 0;
+        padding: 12px 20px;
+    }
+
+    .nav-links.mobile-open a {
+        padding: 10px 0;
+        margin: 0;
+        line-height: 1.2;
+        font-size: 16px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+    }
+
+    footer {
+        padding: 35px 0 25px;
+    }
+
+    .footer-container {
+        width: 88%;
+    }
+
+    .footer-logo {
+        font-size: 22px;
+    }
+}
+
+.nav-links a.active {
+    color: #35e0a1;
+    position: relative;
+}
+
+.nav-links a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -9px;
+    height: 2px;
+    background: #35e0a1;
+    border-radius: 2px;
+}
+
+
+/* DESKTOP FONT SIZE */
+
+@media (min-width: 769px) {
+
+    .nav-links a {
+        font-size: 19px !important;
+    }
+
+    .hero-content h1 {
+        font-size: 68px !important;
+    }
+
+    .hero-content p {
+        font-size: 20px !important;
+    }
+
+    .section-title {
+        font-size: 42px !important;
+    }
+
+    .about-text p {
+        font-size: 19px !important;
+    }
+
+    .project-card h3,
+    .certificate-card h3,
+    .event-card h3,
+    .experience-card h3 {
+        font-size: 22px !important;
+    }
+
+    .project-card p,
+    .certificate-card p,
+    .event-card p,
+    .experience-card p {
+        font-size: 17px !important;
+    }
+
+    .education-card h3 {
+        font-size: 22px !important;
+    }
+
+    .education-card p {
+        font-size: 17px !important;
+    }
+
+    .contact-info,
+    .contact-form {
+        font-size: 18px !important;
+    }
+}
